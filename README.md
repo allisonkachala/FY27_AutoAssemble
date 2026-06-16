@@ -11,8 +11,10 @@ High-fidelity interactive prototype of the Fusion **Data Panel_L1** screen from 
 Open directly in a browser:
 
 ```
-prototype/index.html
+docs/index.html
 ```
+
+Or view the hosted GitHub Pages site after enabling **Settings → Pages → Build from branch → `/docs`**.
 
 Uses Figma-exported assets for toolbar, viewport, browser, view cube, timeline, and QAT icons. Data Panel matches node `82:37201` tokens.
 
@@ -28,15 +30,25 @@ npm run dev
 ## Project structure
 
 ```
-src/
-├── components/
-│   ├── dataPanel/     # Interactive Data Panel (primary)
-│   ├── fusionChrome/  # Simplified static Fusion shell
-│   └── shared/        # Shared icons/utilities
-├── data/              # Mock data (separated from presentation)
-├── pages/             # Screen-level layouts
-├── theme/             # Weave ThemeProvider wrapper
-└── types/             # TypeScript interfaces
+your-repository/
+├── .github/
+├── docs/                # GitHub Pages (V2 AutoAssemble HTML prototype)
+│   ├── index.html
+│   ├── style.css
+│   ├── script.js
+│   └── assets/
+├── V1_AutoAssemble/     # Original HTML prototype (local reference)
+├── src/                 # React + Weave prototype
+│   ├── components/
+│   │   ├── dataPanel/
+│   │   ├── fusionChrome/
+│   │   └── shared/
+│   ├── data/
+│   ├── pages/
+│   ├── theme/
+│   └── types/
+├── package.json
+└── README.md
 ```
 
 ## Prototype scope
