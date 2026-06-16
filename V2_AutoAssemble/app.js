@@ -50,7 +50,7 @@ const COMPONENT_1_ID = 'file-1';
 const COMPONENT_2_ID = 'file-2';
 const REFERENCE_OPACITY = 0.25;
 
-/** Duration matches `.canvas-component.is-placing.is-animating` transition in style.css */
+/** Duration matches `.canvas-component.is-placing.is-animating` transition in styles.css */
 const PLACING_GHOST_TRANSITION_MS = 400;
 /** Figma node 100:48303 — marker + toolbar composite frame */
 const PLACEMENT_HOVER_GROUP = {
