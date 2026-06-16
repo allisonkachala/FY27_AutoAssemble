@@ -1,0 +1,5 @@
+# Configure Autodesk npm registry for @weave-mui packages before running npm install.
+# Example (replace with your registry URL and auth token):
+#
+# @weave-mui:registry=https://npm.autodesk.com/artifactory/api/npm/autodesk-npm/
+# //npm.autodesk.com/artifactory/api/npm/autodesk-npm/:_authToken=${NPM_TOKEN}
