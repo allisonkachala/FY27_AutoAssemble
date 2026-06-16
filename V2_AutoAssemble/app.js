@@ -97,6 +97,9 @@ const SUCCESS_MARKERS = COMPONENT_1_OVERLAY.markers.filter((marker) => marker.va
 const WARNING_MARKERS = COMPONENT_1_OVERLAY.markers.filter((marker) => marker.variant === 'warning');
 const ERROR_MARKERS = COMPONENT_1_OVERLAY.markers.filter((marker) => marker.variant === 'error');
 
+/** All placement markers — main dialog "Insert all instances (6)" */
+const ALL_PLACEMENT_MARKERS = COMPONENT_1_OVERLAY.markers;
+
 /** Detail dialog configs — Figma nodes 93:41503 / 93:41628 / 93:41774 */
 const PLACEMENT_DETAIL_VARIANTS = {
   success: {
@@ -527,10 +530,11 @@ function toggleSuggestionsCheckbox(checkbox) {
   const checked = !checkbox.classList.contains('is-checked');
   setSuggestionsCheckboxChecked(checkbox, checked);
 
-  if (
-    (checkbox === els.suggestionsPopoverCheckboxMain && !isDetailPlacementView())
-    || (checkbox === els.suggestionsPopoverCheckboxDetail && isDetailPlacementView())
-  ) {
+  const affectsCanvasPreview = shouldShowPlacementGuides()
+    && ((checkbox === els.suggestionsPopoverCheckboxDetail && isDetailPlacementView())
+      || (checkbox === els.suggestionsPopoverCheckboxMain && !isDetailPlacementView()));
+
+  if (affectsCanvasPreview) {
     refreshPlacementOverlay();
     updatePlacingGhost();
   }
@@ -541,16 +545,16 @@ function isMainInsertAllChecked() {
     && Boolean(els.suggestionsPopoverCheckboxMain?.classList.contains('is-checked'));
 }
 
+function shouldShowAllMainPreviews() {
+  return isMainInsertAllChecked() && shouldShowPlacementGuides();
+}
+
 function isDetailInsertAllChecked() {
   const variant = state.detailPlacementVariant;
   const hasInsertAll = variant === 'success' || variant === 'error';
   return isDetailPlacementView()
     && hasInsertAll
     && Boolean(els.suggestionsPopoverCheckboxDetail?.classList.contains('is-checked'));
-}
-
-function shouldShowAllMainPreviews() {
-  return isMainInsertAllChecked() && shouldShowPlacementGuides();
 }
 
 function shouldShowAllDetailPreviews() {
@@ -561,9 +565,9 @@ function shouldShowAllPreviews() {
   return shouldShowAllDetailPreviews() || shouldShowAllMainPreviews();
 }
 
-function getInsertAllPreviewMarkers() {
+function getMultiPreviewMarkers() {
   if (shouldShowAllDetailPreviews()) return getDetailMarkers();
-  if (shouldShowAllMainPreviews()) return COMPONENT_1_OVERLAY.markers;
+  if (shouldShowAllMainPreviews()) return ALL_PLACEMENT_MARKERS;
   return [];
 }
 
@@ -777,11 +781,11 @@ function addCanvasComponent(component) {
 }
 
 function getDetailPlacementMarkerNums() {
+  const detailMarkers = getDetailMarkers();
   if (shouldShowAllDetailPreviews()) {
-    return getDetailMarkers().map((marker) => marker.num);
+    return detailMarkers.map((marker) => marker.num);
   }
 
-  const detailMarkers = getDetailMarkers();
   const activeMarker = detailMarkers[state.detailPlacementIndex];
   return activeMarker ? [activeMarker.num] : [];
 }
@@ -1013,21 +1017,27 @@ function renderComponent1Overlay() {
 
   const detailMarkers = getDetailMarkers();
   const detailMarkerNums = new Set(detailMarkers.map((marker) => marker.num));
-  const insertAllMarkers = getInsertAllPreviewMarkers();
   const showAllPreviews = shouldShowAllPreviews();
-  const insertAllMarkerNums = new Set(insertAllMarkers.map((marker) => marker.num));
-  const activeMarkerNum = showAllPreviews && isDetailPlacementView()
-    ? insertAllMarkers[state.detailPlacementIndex]?.num
-    : state.hoveredMarker;
+  const multiPreviewMarkers = showAllPreviews ? getMultiPreviewMarkers() : [];
+  const multiPreviewMarkerNums = new Set(multiPreviewMarkers.map((marker) => marker.num));
+
+  let activeMarkerNum = null;
+  if (showAllPreviews && shouldShowAllDetailPreviews()) {
+    activeMarkerNum = detailMarkers[state.detailPlacementIndex]?.num ?? null;
+  } else {
+    activeMarkerNum = state.hoveredMarker;
+  }
   const activeMarker = markers.find((marker) => marker.num === activeMarkerNum);
 
   let previewHtml = '';
   let hoverGroupHtml = '';
 
   if (showAllPreviews) {
-    previewHtml = insertAllMarkers.map((marker) => renderPreviewHtml(marker, overlay)).join('');
+    previewHtml = multiPreviewMarkers.map((marker) => renderPreviewHtml(marker, overlay)).join('');
     if (activeMarker) {
-      hoverGroupHtml = renderHoverGroupHtml(activeMarker, overlay, { includeMarker: false });
+      hoverGroupHtml = renderHoverGroupHtml(activeMarker, overlay, {
+        includeMarker: !shouldShowAllDetailPreviews(),
+      });
     }
   } else if (activeMarker) {
     previewHtml = renderPreviewHtml(activeMarker, overlay);
@@ -1036,6 +1046,8 @@ function renderComponent1Overlay() {
 
   const hiddenMarkerNums = new Set();
   if (!showAllPreviews && activeMarker) {
+    hiddenMarkerNums.add(activeMarker.num);
+  } else if (showAllPreviews && activeMarker && shouldShowAllMainPreviews()) {
     hiddenMarkerNums.add(activeMarker.num);
   }
 
@@ -1049,7 +1061,8 @@ function renderComponent1Overlay() {
         `height:${overlayPercent(marker.height, overlay.height)}`,
       ].join(';');
       let markerClass = '';
-      if (showAllPreviews && insertAllMarkerNums.has(marker.num) && marker.num === activeMarkerNum) {
+      if (showAllPreviews && shouldShowAllDetailPreviews()
+        && multiPreviewMarkerNums.has(marker.num) && marker.num === activeMarkerNum) {
         markerClass += ' is-hovered';
       }
       if (isDetailPlacementView() && !detailMarkerNums.has(marker.num)) {
@@ -1148,7 +1161,7 @@ function updatePlacingGhost() {
 
   if (shouldShowAllPreviews()) {
     removePlacingGhosts();
-    getInsertAllPreviewMarkers().forEach((marker, index) => {
+    getMultiPreviewMarkers().forEach((marker, index) => {
       const layout = getMarkerPreviewCanvasRect(marker.num);
       if (!layout) return;
       const ghost = ensurePlacingGhost(index);
