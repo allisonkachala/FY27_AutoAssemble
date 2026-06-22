@@ -8,13 +8,27 @@ High-fidelity interactive prototype of the Fusion **Data Panel_L1** screen from 
 
 ### HTML prototype (no build required) — recommended
 
-Open directly in a browser:
+**Live link:** [allisonkachala.github.io/FY27_AutoAssemble](https://allisonkachala.github.io/FY27_AutoAssemble/)
+
+Open locally in a browser:
 
 ```
-prototype/index.html
+V2_AutoAssemble/index.html
+```
+
+Or open the GitHub Pages build:
+
+```
+docs/index.html
 ```
 
 Uses Figma-exported assets for toolbar, viewport, browser, view cube, timeline, and QAT icons. Data Panel matches node `82:37201` tokens.
+
+| Folder | Purpose |
+|--------|---------|
+| `V1_AutoAssemble/` | V1 HTML prototype (baseline placement flow) |
+| `V2_AutoAssemble/` | V2 HTML prototype — edit here |
+| `docs/` | GitHub Pages publish copy of V2 (`script.js`, `style.css`) |
 
 ### React + Weave prototype
 
@@ -28,7 +42,10 @@ npm run dev
 ## Project structure
 
 ```
-src/
+V1_AutoAssemble/       # V1 HTML prototype
+V2_AutoAssemble/       # V2 HTML prototype (source)
+docs/                  # GitHub Pages deploy copy of V2
+src/                   # React + Weave prototype
 ├── components/
 │   ├── dataPanel/     # Interactive Data Panel (primary)
 │   ├── fusionChrome/  # Simplified static Fusion shell
