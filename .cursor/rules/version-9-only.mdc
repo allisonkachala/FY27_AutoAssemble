@@ -1,0 +1,28 @@
+---
+description: Restrict prototype edits to Version 9 unless the user says otherwise
+alwaysApply: true
+---
+
+# Version 9 — Active Prototype
+
+All future changes in this project should **only affect Version 9** until the user explicitly says otherwise.
+
+## Edit scope
+
+- **Do edit:** `V9_AutoAssemble/` (`index.html`, `app.js`, `styles.css`, assets)
+- **Do not edit:** `V3_AutoAssemble/`, `V4_AutoAssemble/`, `V5.1_AutoAssemble/`, `V5.2_AutoAssemble/`, `V6_AutoAssemble/`, `V7_AutoAssemble/`, `V8_AutoAssemble/`, `docs/`, `src/` (unless the user explicitly requests it)
+
+## Version switcher
+
+- Entry point remains `V3_AutoAssemble/index.html` (Version 3–9 dropdown)
+- Do not change the switcher or other version folders unless the user asks
+
+## When implementing features or fixes
+
+1. Make changes in `V9_AutoAssemble/` only
+2. Leave other version behavior and files unchanged
+3. If a change seems to require touching another version, ask first
+
+## GitHub
+
+- Remote: `https://github.com/allisonkachala/FY27_AutoAssemble.git`

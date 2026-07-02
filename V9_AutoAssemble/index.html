@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FY27 AutoAssemble — Version 9</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="viewport-scaler">
+    <div class="artboard">
+      <!-- Top Navigation — Figma node 82:37171 -->
+      <nav class="top-nav" aria-label="Application navigation">
+        <div class="top-nav__qat-left">
+          <div class="top-nav__hub-group">
+            <button type="button" class="top-nav__icon-btn" aria-label="Hub menu">
+              <img src="assets/hub-icon.png" width="16" height="16" alt="" class="icon-img" />
+            </button>
+            <span class="top-nav__hub-label">Team Hub</span>
+            <img src="assets/caret-hub.png" width="10" height="10" alt="" class="icon-img" aria-hidden="true" />
+          </div>
+          <button type="button" class="top-nav__icon-btn" aria-label="Sync">
+            <img src="assets/sync-icon.png" width="16" height="16" alt="" class="icon-img" />
+          </button>
+          <button type="button" class="top-nav__icon-btn" aria-label="Search">
+            <img src="assets/search-icon.png" width="16" height="16" alt="" class="icon-img" />
+          </button>
+          <button type="button" class="top-nav__icon-btn" aria-label="Close">
+            <img src="assets/close-icon.png" width="16" height="16" alt="" class="icon-img" />
+          </button>
+          <button type="button" class="top-nav__icon-btn" aria-label="Home">
+            <img src="assets/qat-home.png" width="16" height="16" alt="" class="icon-img" />
+          </button>
+          <div class="top-nav__data-panel-btn" aria-label="Data panel" aria-current="page">
+            <img src="assets/data-panel-icon.png" width="16" height="16" alt="" class="icon-img" />
+          </div>
+          <div class="top-nav__icon-btn" style="width:26px" aria-hidden="true">
+            <img src="assets/file-icon.png" width="16" height="16" alt="" class="icon-img" />
+          </div>
+          <button type="button" class="top-nav__icon-btn" aria-label="Save">
+            <img src="assets/save-icon.png" width="16" height="16" alt="" class="icon-img" />
+          </button>
+          <div class="top-nav__undo-redo">
+            <div class="top-nav__undo" aria-label="Undo">
+              <img src="assets/undo-icon.png" width="31" height="16" alt="" class="icon-img" />
+            </div>
+            <div class="top-nav__redo" aria-label="Redo">
+              <img src="assets/redo-icon.png" width="31" height="16" alt="" class="icon-img" />
+            </div>
+          </div>
+        </div>
+
+        <div class="top-nav__tabs">
+          <div class="top-nav__doc-tab">
+            <div class="top-nav__doc-tab-inner">
+              <img src="assets/doc-icon.png" width="16" height="16" alt="" class="icon-img" />
+              <span class="top-nav__doc-title">Untitled</span>
+            </div>
+            <button type="button" class="top-nav__doc-close" aria-label="Close document tab">
+              <img src="assets/close-icon.png" width="16" height="16" alt="" class="icon-img" />
+            </button>
+          </div>
+          <button type="button" class="top-nav__new-tab" aria-label="New tab">
+            <img src="assets/plus-icon.png" width="16" height="16" alt="" class="icon-img" />
+          </button>
+        </div>
+
+        <div class="top-nav__qat-right">
+          <button type="button" class="top-nav__icon-btn" aria-label="AI assistant">
+            <img src="assets/ai-icon.png" width="16" height="16" alt="" class="icon-img" />
+          </button>
+          <button type="button" class="top-nav__icon-btn" aria-label="Extensions">
+            <img src="assets/extensions-icon.png" width="16" height="16" alt="" class="icon-img" />
+          </button>
+          <button type="button" class="top-nav__icon-btn" aria-label="Job status">
+            <img src="assets/job-icon.png" width="16" height="16" alt="" class="icon-img" />
+          </button>
+          <button type="button" class="top-nav__icon-btn" aria-label="Help">
+            <img src="assets/help-icon.png" width="16" height="16" alt="" class="icon-img" />
+          </button>
+          <div class="top-nav__user" aria-label="User account"></div>
+        </div>
+      </nav>
+
+      <!-- Data Panel — Figma node 82:37201 (428×1044, interactive) -->
+      <aside class="data-panel" aria-label="Data panel">
+        <div class="tab-list" role="tablist" aria-label="Data panel views">
+          <button type="button" class="tab" id="tab-data" role="tab" aria-selected="true" aria-controls="panel-data">Data</button>
+          <button type="button" class="tab" id="tab-people" role="tab" aria-selected="false" aria-controls="panel-people" tabindex="-1">People</button>
+        </div>
+
+        <div class="action-bar" id="action-bar">
+          <button type="button" class="btn btn--primary" id="btn-upload">Upload</button>
+          <button type="button" class="btn btn--secondary" id="btn-new-folder">New Folder</button>
+          <div class="settings-wrap">
+            <button type="button" class="settings-btn" id="settings-btn" aria-label="Panel settings" aria-haspopup="menu" aria-expanded="false">
+              <img src="assets/panel-settings-icon.svg" width="16" height="16" alt="" class="icon-img" />
+            </button>
+            <ul class="settings-menu" id="settings-menu" role="menu">
+              <li role="menuitem" data-action="sort-name">Sort by name</li>
+              <li role="menuitem" data-action="sort-modified">Sort by date modified</li>
+              <li role="menuitem" data-action="sort-type">Sort by type</li>
+              <li class="divider" role="separator"></li>
+              <li role="menuitem" data-action="simulate-loading">Simulate loading</li>
+              <li role="menuitem" data-action="simulate-empty">Simulate empty state</li>
+              <li role="menuitem" data-action="simulate-error">Simulate error state</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="panel-content" id="panel-data" role="tabpanel" aria-labelledby="tab-data">
+          <nav class="breadcrumb" aria-label="Project location">
+            <button type="button" class="breadcrumb__home" id="breadcrumb-home" aria-label="Go to project home">
+              <img src="assets/home-icon.png" width="16" height="16" alt="" class="icon-img" />
+            </button>
+            <img src="assets/caret-icon.png" width="10" height="10" alt="" class="icon-img" aria-hidden="true" />
+            <span class="breadcrumb__project">[ProjectName]</span>
+          </nav>
+          <div class="file-list" id="file-list" role="list" aria-label="Project files"></div>
+        </div>
+
+        <div class="panel-content" id="panel-people" role="tabpanel" aria-labelledby="tab-people" hidden>
+          <div class="people-list" id="people-list" role="list" aria-label="Project members"></div>
+        </div>
+      </aside>
+
+      <!-- Fusion chrome — Figma nodes 82:38450 (grid canvas), 82:37070, 82:37380, 82:37379, 82:37122 -->
+      <div class="canvas-drop-zone" id="canvas-drop-zone" aria-label="3D viewport"></div>
+      <div class="canvas-components" id="canvas-components" aria-live="polite"></div>
+      <img src="assets/viewport.png" alt="" class="grid-canvas chrome-ref" aria-hidden="true" />
+      <img src="assets/toolbar-ref.png" alt="" class="toolbar-ref chrome-ref" aria-hidden="true" />
+      <img src="assets/browser-ref.png" alt="" class="browser-ref chrome-ref" aria-hidden="true" />
+      <img src="assets/viewcube-ref.png" alt="" class="viewcube-ref chrome-ref" aria-hidden="true" />
+      <img src="assets/timeline-ref.png" alt="" class="timeline-ref chrome-ref" aria-hidden="true" />
+      <img src="assets/canvas-nav-bar.png" alt="" class="canvas-nav-bar chrome-ref" aria-hidden="true" />
+
+      <!-- Canvas placement bar — Figma node 193:104717 -->
+      <div class="placement-bar placement-bar--actions" id="placement-bar" hidden aria-label="Placement controls">
+        <button type="button" class="placement-bar__manual-btn" id="placement-bar-insert-manually">Insert at Origin</button>
+        <div class="placement-bar__insert-group">
+          <button type="button" class="placement-bar__insert-btn placement-bar__insert-btn--split" id="placement-bar-insert-selected">
+            Insert Selected (<span id="placement-bar-selected-count">0</span>)
+          </button>
+          <button
+            type="button"
+            class="placement-bar__insert-split"
+            id="placement-bar-insert-split"
+            aria-label="Insert options"
+            aria-haspopup="menu"
+            aria-expanded="false"
+          >
+            <img src="assets/placement-bar-caret-split.svg" width="12" height="12" alt="" class="icon-img placement-bar__caret-split" />
+          </button>
+          <ul
+            class="placement-bar__menu placement-bar__menu--insert placement-bar__menu--selection-insert"
+            id="placement-bar-insert-menu"
+            role="menu"
+            aria-label="Insert options"
+            hidden
+          >
+            <li role="none">
+              <button type="button" class="placement-bar__menu-item placement-bar__menu-item--insert-count" role="menuitem" data-action="insert">
+                Insert Selected (<span id="placement-bar-insert-menu-count">0</span>)
+              </button>
+            </li>
+            <li role="none">
+              <button type="button" class="placement-bar__menu-item placement-bar__menu-item--insert-all" role="menuitem" data-action="insert-all">
+                Insert All
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- AutoAssemble placement settings — Figma node 178:78950 -->
+      <aside
+        class="placement-settings-popover"
+        id="placement-settings-popover"
+        hidden
+        aria-labelledby="placement-settings-title"
+      >
+        <div class="placement-settings-popover__container">
+          <header class="placement-settings-popover__header">
+            <div class="placement-settings-popover__title-row">
+              <button type="button" class="placement-settings-popover__icon-btn" aria-label="AI suggestions" tabindex="-1">
+                <img src="assets/popover-ai-sparkle.svg" width="16" height="16" alt="" class="icon-img" />
+              </button>
+              <h2 class="placement-settings-popover__title" id="placement-settings-title">AutoAssemble</h2>
+              <button type="button" class="placement-settings-popover__icon-btn" id="placement-settings-close" aria-label="Close settings">
+                <img src="assets/popover-close.svg" width="16" height="16" alt="" class="icon-img" />
+              </button>
+            </div>
+            <div class="placement-settings-popover__divider" aria-hidden="true"></div>
+          </header>
+
+          <div class="placement-settings-popover__intro">
+            <p class="placement-settings-popover__description">Suggested constraints from this component’s previous assembly constraints.</p>
+          </div>
+
+          <div class="placement-settings-popover__table-wrap">
+            <p class="placement-settings-popover__warning" id="placement-settings-warning" hidden></p>
+            <div class="placement-settings-popover__table" role="table" aria-label="Suggested constraints">
+              <div class="placement-settings-popover__table-row placement-settings-popover__table-row--header" role="row">
+                <div class="placement-settings-popover__cell placement-settings-popover__cell--name" role="columnheader">Name</div>
+                <div class="placement-settings-popover__cell placement-settings-popover__cell--type" role="columnheader">Type</div>
+                <div class="placement-settings-popover__cell placement-settings-popover__cell--geometry" role="columnheader">Geometry</div>
+                <div class="placement-settings-popover__cell placement-settings-popover__cell--offset" role="columnheader">Offset</div>
+                <div class="placement-settings-popover__cell placement-settings-popover__cell--flip" role="columnheader">Flip</div>
+              </div>
+              <div class="placement-settings-popover__table-row placement-settings-popover__table-row--selected" role="row">
+                <div class="placement-settings-popover__cell placement-settings-popover__cell--name" role="cell">Constraint 1</div>
+                <div class="placement-settings-popover__cell placement-settings-popover__cell--type" role="cell">
+                  <img src="assets/settings-popover-constraint-type.svg" width="16" height="16" alt="" class="icon-img" />
+                </div>
+                <div class="placement-settings-popover__cell placement-settings-popover__cell--geometry" role="cell">Edge-Edge</div>
+                <div class="placement-settings-popover__cell placement-settings-popover__cell--offset" role="cell">
+                  <div class="weave-text-input weave-text-input--box weave-text-input--small">
+                    <div class="weave-text-input__container">
+                      <input
+                        type="number"
+                        class="weave-text-input__field placement-settings-popover__offset-input"
+                        value="0.00"
+                        step="0.01"
+                        inputmode="decimal"
+                        aria-label="Constraint 1 offset"
+                      />
+                      <span class="weave-text-input__adornment weave-text-input__adornment--end" aria-hidden="true">mm</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="placement-settings-popover__cell placement-settings-popover__cell--flip" role="cell">
+                  <button type="button" class="weave-icon-button weave-icon-button--small placement-settings-popover__flip-btn" aria-label="Flip Constraint 1">
+                    <img src="assets/settings-popover-flip.svg" width="16" height="16" alt="" class="icon-img" />
+                  </button>
+                </div>
+              </div>
+              <div class="placement-settings-popover__table-row" role="row">
+                <div class="placement-settings-popover__cell placement-settings-popover__cell--name" role="cell">Constraint 2</div>
+                <div class="placement-settings-popover__cell placement-settings-popover__cell--type" role="cell">
+                  <img src="assets/settings-popover-constraint-type.svg" width="16" height="16" alt="" class="icon-img" />
+                </div>
+                <div class="placement-settings-popover__cell placement-settings-popover__cell--geometry" role="cell">Edge-Edge</div>
+                <div class="placement-settings-popover__cell placement-settings-popover__cell--offset" role="cell">
+                  <div class="weave-text-input weave-text-input--box weave-text-input--small">
+                    <div class="weave-text-input__container">
+                      <input
+                        type="number"
+                        class="weave-text-input__field placement-settings-popover__offset-input"
+                        value="0.00"
+                        step="0.01"
+                        inputmode="decimal"
+                        aria-label="Constraint 2 offset"
+                      />
+                      <span class="weave-text-input__adornment weave-text-input__adornment--end" aria-hidden="true">mm</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="placement-settings-popover__cell placement-settings-popover__cell--flip" role="cell">
+                  <button type="button" class="weave-icon-button weave-icon-button--small placement-settings-popover__flip-btn" aria-label="Flip Constraint 2">
+                    <img src="assets/settings-popover-flip.svg" width="16" height="16" alt="" class="icon-img" />
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <footer class="placement-settings-popover__footer">
+            <div class="placement-settings-popover__divider" aria-hidden="true"></div>
+            <div class="placement-settings-popover__footer-actions">
+              <div class="placement-settings-popover__pagination">
+                <button type="button" class="placement-settings-popover__page-btn" id="placement-settings-prev" aria-label="Previous placement">
+                  <img src="assets/popover-caret-left.svg" width="16" height="16" alt="" class="icon-img placement-settings-popover__caret-prev" />
+                </button>
+                <button type="button" class="placement-settings-popover__page-btn" id="placement-settings-next" aria-label="Next placement">
+                  <img src="assets/popover-caret-right.svg" width="16" height="16" alt="" class="icon-img placement-settings-popover__caret-next" />
+                </button>
+              </div>
+              <div class="placement-settings-popover__insert-group">
+                <button type="button" class="placement-settings-popover__insert-btn" id="placement-settings-insert">
+                  Insert Selected (<span id="placement-settings-insert-count">0</span>)
+                </button>
+                <button type="button" class="placement-settings-popover__insert-split" id="placement-settings-insert-split" aria-label="Insert options" aria-haspopup="menu" aria-expanded="false">
+                  <img src="assets/placement-bar-caret-split.svg" width="8" height="8" alt="" class="icon-img placement-settings-popover__caret-split" />
+                </button>
+                <ul
+                  class="placement-settings-popover__menu"
+                  id="placement-settings-insert-menu"
+                  role="menu"
+                  aria-label="Insert options"
+                  hidden
+                >
+                  <li role="none">
+                    <button type="button" class="placement-settings-popover__menu-item" role="menuitem" data-action="insert-selected-occurrences" id="placement-settings-insert-selected">
+                      Insert Selected (<span id="placement-settings-selected-count">0</span>)
+                    </button>
+                  </li>
+                  <li role="none">
+                    <button type="button" class="placement-settings-popover__menu-item" role="menuitem" data-action="insert-all-occurrences">
+                      Insert All
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </footer>
+        </div>
+      </aside>
+
+      <!-- AutoAssemble Suggestions — Figma nodes 93:41904 / 93:41503 @ 93:39982 -->
+      <aside
+        class="suggestions-popover"
+        id="suggestions-popover"
+        hidden
+        aria-labelledby="suggestions-popover-title"
+      >
+        <div class="suggestions-popover__container">
+          <header class="suggestions-popover__header">
+            <div class="suggestions-popover__title-row">
+              <button type="button" class="suggestions-popover__icon-btn" aria-label="AI suggestions" tabindex="-1">
+                <img src="assets/popover-ai-sparkle.svg" width="16" height="16" alt="" class="icon-img" />
+              </button>
+              <h2 class="suggestions-popover__title" id="suggestions-popover-title">AutoAssemble Suggestions</h2>
+              <button type="button" class="suggestions-popover__icon-btn" id="suggestions-popover-close" aria-label="Close suggestions">
+                <img src="assets/popover-close.svg" width="16" height="16" alt="" class="icon-img" />
+              </button>
+            </div>
+            <div class="suggestions-popover__divider" aria-hidden="true"></div>
+          </header>
+
+          <div class="suggestions-popover__panel suggestions-popover__panel--main" id="suggestions-popover-main">
+            <div class="suggestions-popover__body">
+              <div class="suggestions-popover__row">
+                <span class="suggestions-popover__row-icon" aria-hidden="true">
+                  <img src="assets/popover-complete.svg" width="16" height="16" alt="" class="icon-img" />
+                </span>
+                <span class="suggestions-popover__row-text">
+                  <span class="suggestions-popover__count">3</span>
+                  <button type="button" class="suggestions-popover__link" data-action="open-success-detail">placements that won’t cause issues</button>
+                </span>
+              </div>
+              <div class="suggestions-popover__row">
+                <span class="suggestions-popover__row-icon" aria-hidden="true">
+                  <img src="assets/popover-alert.svg" width="16" height="16" alt="" class="icon-img" />
+                </span>
+                <span class="suggestions-popover__row-text">
+                  <span class="suggestions-popover__count">1</span>
+                  <button type="button" class="suggestions-popover__link">placement that might have issues</button>
+                </span>
+              </div>
+              <div class="suggestions-popover__row">
+                <span class="suggestions-popover__row-icon" aria-hidden="true">
+                  <img src="assets/popover-error.svg" width="16" height="16" alt="" class="icon-img" />
+                </span>
+                <span class="suggestions-popover__row-text">
+                  <span class="suggestions-popover__count">2</span>
+                  <button type="button" class="suggestions-popover__link">placements that could cause issues</button>
+                </span>
+              </div>
+            </div>
+
+            <div class="suggestions-popover__checkbox-row">
+              <button
+                type="button"
+                class="suggestions-popover__checkbox is-checked"
+                id="suggestions-popover-checkbox-main"
+                role="checkbox"
+                aria-checked="true"
+                aria-label="Insert all instances (6)"
+              >
+                <img src="assets/popover-checkmark.svg" width="8" height="8" alt="" class="icon-img suggestions-popover__checkbox-mark" />
+              </button>
+              <span class="suggestions-popover__checkbox-label">Insert all instances (6)</span>
+            </div>
+
+            <footer class="suggestions-popover__footer">
+              <div class="suggestions-popover__divider" aria-hidden="true"></div>
+              <div class="suggestions-popover__actions">
+                <button type="button" class="suggestions-popover__btn suggestions-popover__btn--secondary" tabindex="-1">Review Instances</button>
+                <button type="button" class="suggestions-popover__btn suggestions-popover__btn--primary" tabindex="-1">Insert All</button>
+              </div>
+            </footer>
+          </div>
+
+          <div class="suggestions-popover__panel suggestions-popover__panel--detail" id="suggestions-popover-detail" hidden>
+            <button type="button" class="suggestions-popover__back" id="suggestions-popover-back" aria-label="Back to suggestions">
+              <img src="assets/popover-back.png" width="16" height="16" alt="" class="icon-img suggestions-popover__back-icon" />
+              <span>Back</span>
+            </button>
+
+            <div class="suggestions-popover__checkbox-row">
+              <button
+                type="button"
+                class="suggestions-popover__checkbox"
+                id="suggestions-popover-checkbox-detail"
+                role="checkbox"
+                aria-checked="false"
+                aria-label="Insert all instances (3)"
+              >
+                <img src="assets/popover-checkmark.svg" width="8" height="8" alt="" class="icon-img suggestions-popover__checkbox-mark" />
+              </button>
+              <span class="suggestions-popover__checkbox-label">Insert all instances (3)</span>
+            </div>
+
+            <div class="suggestions-popover__divider" aria-hidden="true"></div>
+
+            <div class="suggestions-popover__detail-body">
+              <div class="suggestions-popover__detail-status">
+                <span class="suggestions-popover__row-icon suggestions-popover__row-icon--detail" aria-hidden="true">
+                  <img src="assets/popover-complete.svg" width="16" height="16" alt="" class="icon-img" />
+                </span>
+                <span class="suggestions-popover__detail-status-label">Placements with no issues</span>
+              </div>
+
+              <div class="suggestions-popover__pagination" aria-hidden="true">
+                <span class="suggestions-popover__pagination-btn is-disabled">
+                  <img src="assets/popover-caret-left.svg" width="16" height="16" alt="" class="icon-img suggestions-popover__caret-left" />
+                </span>
+                <span class="suggestions-popover__pagination-label">1 of 3</span>
+                <span class="suggestions-popover__pagination-btn">
+                  <img src="assets/popover-caret-right.svg" width="16" height="16" alt="" class="icon-img suggestions-popover__caret-right" />
+                </span>
+              </div>
+
+              <div class="suggestions-popover__detail-field">
+                <span class="suggestions-popover__detail-field-label">Constraints</span>
+                <div class="suggestions-popover__detail-field-values">
+                  <div class="suggestions-popover__detail-value-row">
+                    <span class="suggestions-popover__detail-value-icon" aria-hidden="true">
+                      <img src="assets/popover-constraint.png" width="24" height="24" alt="" class="icon-img" />
+                    </span>
+                    <span>Edge-Edge</span>
+                  </div>
+                  <div class="suggestions-popover__detail-value-row">
+                    <span class="suggestions-popover__detail-value-icon" aria-hidden="true">
+                      <img src="assets/popover-constraint.png" width="24" height="24" alt="" class="icon-img" />
+                    </span>
+                    <span>Edge-Edge</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="suggestions-popover__detail-field suggestions-popover__detail-field--flip">
+                <span class="suggestions-popover__detail-field-label">Flip</span>
+                <span class="suggestions-popover__row-icon suggestions-popover__row-icon--detail" aria-hidden="true">
+                  <img src="assets/popover-flip.svg" width="16" height="16" alt="" class="icon-img" />
+                </span>
+              </div>
+            </div>
+
+            <footer class="suggestions-popover__footer suggestions-popover__footer--detail">
+              <div class="suggestions-popover__divider" aria-hidden="true"></div>
+              <div class="suggestions-popover__actions">
+                <button type="button" class="suggestions-popover__btn suggestions-popover__btn--secondary suggestions-popover__btn--detail" tabindex="-1">Cancel</button>
+                <button type="button" class="suggestions-popover__btn suggestions-popover__btn--primary suggestions-popover__btn--detail" tabindex="-1">Place Component</button>
+              </div>
+            </footer>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <!-- Modals -->
+  <div class="modal-overlay" id="upload-modal" role="dialog" aria-modal="true" aria-labelledby="upload-title">
+    <div class="modal">
+      <h2 class="modal__title" id="upload-title">Upload file</h2>
+      <input type="text" class="modal__field" id="upload-filename" placeholder="e.g. New Part.f3d" aria-label="File name" />
+      <div class="modal__error" id="upload-error" role="alert"></div>
+      <div class="modal__actions">
+        <button type="button" class="btn btn--secondary" id="upload-cancel">Cancel</button>
+        <button type="button" class="btn btn--primary" id="upload-submit">Upload</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="folder-modal" role="dialog" aria-modal="true" aria-labelledby="folder-title">
+    <div class="modal">
+      <h2 class="modal__title" id="folder-title">New folder</h2>
+      <input type="text" class="modal__field" id="folder-name" placeholder="Folder name" aria-label="Folder name" />
+      <div class="modal__error" id="folder-error" role="alert"></div>
+      <div class="modal__actions">
+        <button type="button" class="btn btn--secondary" id="folder-cancel">Cancel</button>
+        <button type="button" class="btn btn--primary" id="folder-submit">Create</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Context menu — Figma node 66:43834 (Menu 3.0) -->
+  <ul class="context-menu" id="context-menu" role="menu" hidden aria-label="File actions">
+    <li class="context-menu__item" role="menuitem" data-action="open">Open</li>
+    <li class="context-menu__item" role="menuitem" data-action="insert">Insert into Current Design</li>
+    <li class="context-menu__item" role="menuitem" data-action="create-drawing">Create Drawing</li>
+    <li class="context-menu__item" role="menuitem" data-action="share-link">Share Link</li>
+    <li class="context-menu__item" role="menuitem" data-action="import-change">Import New Change</li>
+    <li class="context-menu__item" role="menuitem" data-action="rename">Rename</li>
+    <li class="context-menu__item" role="menuitem" data-action="move">Move</li>
+    <li class="context-menu__item" role="menuitem" data-action="copy">Copy</li>
+    <li class="context-menu__item" role="menuitem" data-action="trash">Move to Trash</li>
+    <li class="context-menu__item" role="menuitem" data-action="offline-cache">Add to Offline Cache</li>
+    <li class="context-menu__item" role="menuitem" data-action="create-version">Create Version</li>
+  </ul>
+
+  <div class="drag-ghost" id="drag-ghost" hidden aria-hidden="true"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
